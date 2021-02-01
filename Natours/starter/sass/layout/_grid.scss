@@ -1,0 +1,55 @@
+.row {
+  /* `width` will set a width regardless of the viewport size, and thus will
+   * hang partially out of sight if larger than the viewport. `max-width`
+   * will allow it to shrink if the viewport size shinks below the given
+   * value */
+  max-width: $grid-width;
+  /* This will remove the margin and autocalculate the size. This will
+   * essentially auto-center the element */
+  margin: 0 auto;
+
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+
+  /* An attribute selector! */
+  [class^='col-'] {
+    float: left;
+
+    &:not(:last-child) {
+      /* Every element EXCEPT the one on the right needs a right margin
+       * to keep them seperated */
+      margin-right: $gutter-horizontal;
+    }
+  }
+
+  /* We want the width to be equal to: the total size of the parent (100%),
+   * minus the width of the gap between the elements of a row (`-$gutter`),
+   * and then divided by the total number of elements in that row (`/ 2`) */
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+  }
+  .col-2-of-3 {
+    width: calc(
+      (2 * (100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal}
+    );
+  }
+  .col-1-of-4 {
+    width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+  }
+  .col-2-of-4 {
+    width: calc(
+      (2 * (100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal}
+    );
+  }
+  .col-3-of-4 {
+    width: calc(
+      3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal}
+    );
+  }
+}

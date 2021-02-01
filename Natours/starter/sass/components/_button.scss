@@ -1,0 +1,93 @@
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* The first number below will apply to top and bottom, the second will
+    apply to left and right. */
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
+    font-size: $default-font-size;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /* The first value is the X axis offset, the second is Y value offset, and
+  the third sets how much blur we want (higher pixel values result in more blur)
+  */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    transform: translateY(0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: white;
+    }
+  }
+
+  &::after {
+    /* content and display (even if empty) *MUST* be defined */
+    content: '';
+    display: inline-block;
+    /* The `after` pseudo-element is treated like a child of the main element and
+  so it's size is based on the parent's size */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* To hide this pseudo-element behind the main button, we need to set it to
+  an absolute position so that they may occupy the same space. Since the reference
+  point for an absolute position is based on the first relative position it finds
+  as it bubbles up, we must also set the button to relative */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Finally, we set its z-index to something lower than that of the button (0) */
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0px);
+  }
+}
+

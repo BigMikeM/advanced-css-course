@@ -1,0 +1,8 @@
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  /* The main header image is 95vh but is clipped up to 75vh on the right side,
+   * so we're going to move this up by 20vh to eliminate the white space and let
+   * the image overlap this section */
+  margin-top: -20vh;
+}
