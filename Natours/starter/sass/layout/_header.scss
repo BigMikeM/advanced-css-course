@@ -11,6 +11,8 @@
   position: relative;
 
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
   &__logo-box {
     position: absolute;
     top: 4rem;
@@ -25,9 +27,8 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* The line above will move our element's reference point over a bit so
-  that it sits more where we'd expect */
+    //   /* The line above will move our element's reference point over a bit so
+    // that it sits more where we'd expect */
     text-align: center;
   }
 }
-
